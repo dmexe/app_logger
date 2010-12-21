@@ -23,7 +23,7 @@ module Dima
 			unless @logger
 				@logger = if _options[:env] == "test"
 										_create_test_logger
-									elsif ENV["_"] =~ /irb/ || ENV["APP_LOGGER_STDOUT"]
+									elsif (ENV["_"] =~ /irb/ || ENV["APP_LOGGER_STDOUT"]) && !ENV["APP_LOGGER_NOSTDOUT"]
 										_create_stdout_logger
 									else
 										_create_app_logger
@@ -35,7 +35,7 @@ module Dima
 		def _create_app_logger
 			name = _options[:env] + "." + (_options[:name] && "#{_options[:name]}.").to_s + _options[:pid].to_s + ".log"
 			name = File.join(self._options[:root], "log", _date_string, name)
-			_mkdir(_log_file)
+			_mkdir(name)
 			AppLoggerInstance.new(name)
 		end
 
