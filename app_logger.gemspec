@@ -1,6 +1,6 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
 Gem::Specification.new do |s|
-    s.name        = %q{app_logger}
+    s.name        = %q{dima_app_logger}
     s.version     = "0.0.1"
     s.summary     = %q{Application logger}
     s.description = %q{Application logger}
