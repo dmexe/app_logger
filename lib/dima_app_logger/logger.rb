@@ -77,7 +77,6 @@ module Dima
 		end
 
 		def method_missing(method, *args, &block)
-			puts method.to_s
 			_expire! if _expired?
 			_logger.__send__(method, *args, &block)
 		end
@@ -93,9 +92,6 @@ module Dima
 	class AppStdoutLoggerInstance < ::Logger
 		def initialize
 			super(STDOUT)
-		end
-		def format_message(level, time, progname, msg)
-			msg.to_s
 		end
 	end
 end
