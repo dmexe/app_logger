@@ -3,6 +3,7 @@ require 'logger'
 
 module Dima
 	class AppLogger
+		DIR_FORMAT = ":year:month:day"
 		attr_accessor :_options
 
 		def initialize(options = {})
@@ -16,7 +17,12 @@ module Dima
 			end
 			self._options[:env]  ||= "development"
 			self._options[:root] ||= Dir.pwd
+			self._options[:dir_format] = _make_dir_format(DIR_FORMAT)
 			_expire!
+		end
+
+		def _make_dir_format(format)
+			format.gsub(":year", '%Y').gsub(/:month/, '%m').gsub(/:day/, '%d')
 		end
 
 		def _logger
@@ -69,7 +75,7 @@ module Dima
 		end
 
 		def _date_string
-			_options[:time].strftime("%Y%m%d")
+			_options[:time].strftime(_options[:dir_format])
 		end
 
 		def _mkdir(path)
