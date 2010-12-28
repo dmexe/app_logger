@@ -2,7 +2,7 @@ require 'fileutils'
 require 'logger'
 
 module Dima
-	class AppLogger
+  class AppLogger
 		DIR_FORMAT = ":year:month:day"
 		attr_accessor :_options
 
