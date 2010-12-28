@@ -6,7 +6,7 @@ module DimaAppLogger
     railtie_name :dima_app_logger
 
     rake_tasks do
-      load "tasks/my_plugin.rake"
+      load "tasks/app_logger.rake"
     end
   end
 end
